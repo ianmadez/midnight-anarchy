@@ -545,8 +545,8 @@ section {
 }
 
 .logo-section img {
-  width: clamp(200px, 70vw, 500px);
-  max-width: 90%;
+  width: clamp(320px, 80vw, 550px);
+  max-width: 95%;
   height: auto;
   position: relative;
   z-index: 2;
@@ -582,38 +582,7 @@ section {
   }
 }
 
-/* Theme-aware shimmer aura - smaller than logo, centered behind */
-.logo-glow-ring {
-  position: absolute;
-  top: calc(50% - 30px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(200px, 35vw, 350px);
-  height: clamp(200px, 35vw, 350px);
-  border-radius: 50%;
-  background: 
-    radial-gradient(circle, var(--glow-ring-1) 0%, var(--glow-ring-2) 40%, transparent 70%),
-    conic-gradient(from 0deg, 
-      transparent, 
-      var(--glow-conic-1), 
-      transparent 20%, 
-      var(--glow-conic-2), 
-      transparent 40%,
-      var(--glow-conic-1),
-      transparent 60%,
-      var(--glow-conic-2),
-      transparent 80%,
-      var(--glow-conic-1),
-      transparent
-    );
-  animation: logo-ring-rotate 20s linear infinite;
-  z-index: 1;
-}
-
-@keyframes logo-ring-rotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
+/* Logo glow ring removed - glow effect is handled by drop-shadow on the logo itself */
 
 /* --------------------------------------------------------------------------
    Intro / Description
