@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Midnight Anarchy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="After dark, before the chaos. Welcome to Midnight Anarchy." />
+
+  <!-- Google Fonts (fallback) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-theme="diamond">
+
+  <!-- 
+  ============================================================================
+  THEME CONFIGURATION
+  ============================================================================
+  Change data-theme on <body> to switch themes:
+  - "diamond" (default) - Silver/white shimmer
+  - "gold" - Golden shimmer  
+  - "rosegold" - Rose gold shimmer
+  
+  Make sure you have these logo images in /img/:
+  - midnightanarchy-diamond-nobg.png
+  - midnightanarchy-gold-nobg.png
+  - midnightanarchy-rosegold-nobg.png
+  ============================================================================
+  -->
+
+  <!-- Texture Overlay -->
+  <div class="texture-overlay" aria-hidden="true"></div>
+
+  <!-- Shimmer Background -->
+  <div class="shimmer-bg" id="shimmer-bg" aria-hidden="true"></div>
+
+  <!-- Theme Switcher -->
+  <div class="theme-switcher" id="theme-switcher">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Change theme" title="Change theme">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </button>
+    <div class="theme-menu" id="theme-menu">
+      <span class="theme-menu-title">Theme</span>
+      <button class="theme-option" data-theme="diamond">
+        <span class="theme-swatch theme-swatch--diamond"></span>
+        <span>Diamond</span>
+      </button>
+      <button class="theme-option" data-theme="gold">
+        <span class="theme-swatch theme-swatch--gold"></span>
+        <span>Gold</span>
+      </button>
+      <button class="theme-option" data-theme="rosegold">
+        <span class="theme-swatch theme-swatch--rosegold"></span>
+        <span>Rose Gold</span>
+      </button>
+      <button class="theme-option" data-theme="cream">
+        <span class="theme-swatch theme-swatch--cream"></span>
+        <span>Cream</span>
+      </button>
+    </div>
+  </div>
+
+  <main class="landing">
+
+    <!-- LOGO -->
+    <section class="logo-section fade-in-zoom">
+      <div class="logo-glow-ring"></div>
+      <img src="img/midnightanarchy-diamond-nobg.png" alt="Midnight Anarchy Logo" id="theme-logo" />
+      <h1 class="logo-title">Midnight Anarchy</h1>
+    </section>
+
+    <!-- DESCRIPTION -->
+    <section class="intro fade-in-zoom">
+      <span class="intro-line">After dark</span>
+      <span class="intro-line">Before the chaos</span>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section class="events-section fade-in-zoom" id="events">
+      <h2>Events</h2>
+      
+      <!-- Upcoming Events -->
+      <div class="events-group">
+        <h3 class="events-label events-label--upcoming">Upcoming</h3>
+        <div class="events-list">
+          <!-- ⬇️ EDIT EVENT DETAILS HERE - This is the single source of truth ⬇️ -->
+          <article class="event-card event-card--upcoming" id="upcoming-event"
+            data-event-date="2026-03-15"
+            data-event-time="22:00"
+            data-event-location="Kuala Lumpur, Malaysia"
+            data-event-title="Midnight Anarchy: Genesis">
+            <div class="event-card-date">
+              <!-- Update day/month to match data-event-date above -->
+              <span class="day">15</span>
+              <span class="month">MAR</span>
+            </div>
+            <div class="event-card-info">
+              <h4>Midnight Anarchy: Genesis</h4>
+              <!-- Update details to match data attributes above -->
+              <p class="event-card-details">Kuala Lumpur, Malaysia · 10:00 PM</p>
+              <p class="event-card-description">The inaugural event. Where it all begins. Join us for a night that will set the standard for everything to come.</p>
+            </div>
+            <span class="event-status event-status--upcoming">Coming Soon</span>
+          </article>
+          <!-- ⬆️ END EVENT CONFIG ⬆️ -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT INFO - Countdown -->
+    <section class="event-info fade-in-zoom" id="event-info">
+      <div class="countdown-container">
+        <h3 class="countdown-title">Event Starts In</h3>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-value" id="countdown-days">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="countdown-hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="countdown-minutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="countdown-seconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+      <div class="event-details-summary">
+        <div class="event-meta">
+          <span class="label">Date</span>
+          <span class="value" id="event-date-display">March 15, 2026</span>
+        </div>
+        <div class="event-meta">
+          <span class="label">Time</span>
+          <span class="value" id="event-time-display">10:00 PM</span>
+        </div>
+        <div class="event-meta">
+          <span class="label">Location</span>
+          <span class="value" id="event-location-display">Kuala Lumpur, Malaysia</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKETS -->
+    <section class="tickets fade-in-zoom" id="tickets">
+      <!-- Sold Out Banner (hidden by default - controlled via JS config) -->
+      <div class="sold-out-banner" id="sold-out-banner" hidden>
+        <span class="sold-out-icon">⬥</span>
+        <span class="sold-out-text">Sold Out</span>
+        <p class="sold-out-subtext">Maximum attendance reached. Follow us for future events.</p>
+      </div>
+      
+      <button class="ticket-toggle" id="ticket-toggle" aria-expanded="false" aria-controls="ticket-form-container">
+        Buy Tickets
+      </button>
+      
+      <!-- Inline Ticket Form (expands downward) -->
+      <div class="ticket-form-container" id="ticket-form-container">
+        <form class="ticket-form" id="ticket-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" name="fullName" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp</label>
+              <input type="tel" id="phone" name="phone" placeholder="012-345 6789" maxlength="10" pattern="\d{1,10}" required />
+            </div>
+            <div class="form-group">
+              <label for="ticket-qty">Tickets (Max 5)</label>
+              <select id="ticket-qty" name="ticketQty" required>
+                <option value="">Select</option>
+                <option value="1">1 Ticket</option>
+                <option value="2">2 Tickets</option>
+                <option value="3">3 Tickets</option>
+                <option value="4">4 Tickets</option>
+                <option value="5">5 Tickets</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Price Calculation -->
+          <div class="price-summary" id="price-summary">
+            <div class="price-row">
+              <span class="price-label">Price per ticket</span>
+              <span class="price-value" id="price-per-ticket">RM 0.00</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Quantity</span>
+              <span class="price-value" id="qty-display">0</span>
+            </div>
+            <div class="price-row price-total">
+              <span class="price-label">Total</span>
+              <span class="price-value" id="total-price">RM 0.00</span>
+            </div>
+          </div>
+
+          <!-- Payment Section -->
+          <div class="payment-section">
+            <h3>Payment</h3>
+            <div class="qr-code-container">
+              <div class="qr-wrapper" id="qr-wrapper">
+                <div class="qr-placeholder" id="qr-image">
+                  <span>QR Code</span>
+                  <small>Scan to pay</small>
+                </div>
+                <!-- Replace with actual QR code image:
+                <img src="img/payment-qr.png" alt="Payment QR Code" id="qr-image" />
+                -->
+                <button type="button" class="qr-menu-btn" id="qr-menu-btn" aria-label="QR options">
+                  <span></span><span></span><span></span>
+                </button>
+                <div class="qr-menu" id="qr-menu">
+                  <button type="button" class="qr-menu-item" id="qr-download">Download QR Code</button>
+                </div>
+              </div>
+            </div>
+            <p class="payment-instructions">Scan the QR code to complete payment, then upload your receipt screenshot below.</p>
+          </div>
+
+          <!-- Receipt Image Upload -->
+          <div class="form-group">
+            <label for="receipt-image">Payment Receipt Screenshot</label>
+            <div class="image-upload-container" id="image-upload-container">
+              <input type="file" id="receipt-image" name="receiptImage" accept="image/*" required />
+              <div class="image-upload-placeholder" id="image-upload-placeholder">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span>Click or drag to upload receipt</span>
+                <small>PNG, JPG, or JPEG</small>
+              </div>
+              <div class="image-preview" id="image-preview">
+                <img id="preview-img" alt="Receipt preview" />
+                <button type="button" class="remove-image" id="remove-image" aria-label="Remove image">&times;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirmation Preference -->
+          <div class="form-group confirmation-preference">
+            <label>How would you like us to send your confirmation?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="confirmationMethod" value="whatsapp" required />
+                <span class="radio-custom"></span>
+                <span class="radio-label">WhatsApp</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="confirmationMethod" value="email" />
+                <span class="radio-custom"></span>
+                <span class="radio-label">Email</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit" id="form-submit">
+            Submit Ticket Request
+          </button>
+          <p class="form-note">Your ticket will be confirmed once payment is verified.</p>
+          <p class="form-note">For Any Inquiries, Contact us at support@midnightanarchy.com or call +60 12-345 6789.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section class="video-section fade-in-zoom">
+      <div class="video-container">
+        <div class="video-placeholder" id="video-placeholder">
+          <div class="video-placeholder-icon"></div>
+          <span class="video-placeholder-text">Video Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE (Past Events) -->
+    <section class="events-section fade-in-zoom" id="archive">
+      <div class="events-group">
+        <h3 class="events-label events-label--past">Archive</h3>
+        <div class="events-list events-list--empty">
+          <p class="no-events">No past events yet. History starts here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section fade-in-zoom" id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-collage">
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 1</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 2</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 3</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 4</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 5</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 6</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 7</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><span>Photo 8</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section fade-in-zoom" id="about">
+      <h2>About</h2>
+      <div class="about-content">
+        <p class="about-tagline">Where the night belongs to those who seek it.</p>
+        <div class="about-text">
+          <p class="text">Midnight Anarchy is not just an event, it's a state of mind. A sound, vibe, and the unspoken understanding that the best moments happen when the world sleeps.</p>
+          <p class="text">We exist when the sun goes down - till dawn, where music blurs reality and authenticity thrives. Come embody the raw energy of people who refuse to wait for permission to feel alive.</p>
+          <p class="text">This is your invitation to the chaos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer fade-in-zoom">
+      <a href="https://instagram.com/midnight_anarchy" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span>@midnight_anarchy</span>
+      </a>
+      <p>&copy; 2026 Midnight Anarchy. All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
