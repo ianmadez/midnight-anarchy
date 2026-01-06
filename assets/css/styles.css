@@ -401,6 +401,11 @@ body[data-theme="cream"] {
 /* --------------------------------------------------------------------------
    Base Styles
    -------------------------------------------------------------------------- */
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -408,6 +413,8 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Texture Overlay - visible grain effect */
@@ -513,11 +520,16 @@ body::before {
   align-items: center;
   padding: var(--space-md);
   text-align: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 section {
   width: 100%;
   max-width: 1200px;
+  box-sizing: border-box;
 }
 
 /* --------------------------------------------------------------------------
@@ -533,7 +545,8 @@ section {
 }
 
 .logo-section img {
-  width: clamp(320px, 50vw, 500px);
+  width: clamp(200px, 70vw, 500px);
+  max-width: 90%;
   height: auto;
   position: relative;
   z-index: 2;
@@ -1508,6 +1521,8 @@ section {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .events-section h2 {
@@ -1572,15 +1587,21 @@ section {
 
 /* Event Card */
 .event-card {
-  display: grid;
-  grid-template-columns: 90px 1fr auto;
-  gap: var(--space-md);
-  align-items: start;
-  padding: var(--space-md) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+  text-align: center;
+  padding: var(--space-md);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   transition: all var(--transition-smooth);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .event-card:hover {
@@ -1595,8 +1616,10 @@ section {
 
 .event-card-date {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
   padding: var(--space-sm);
   background: rgba(255, 255, 255, 0.05);
   border-radius: 4px;
@@ -1614,7 +1637,11 @@ section {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-top: 0.25rem;
+}
+
+.event-card-info {
+  width: 100%;
+  max-width: 100%;
 }
 
 .event-card-info h4 {
@@ -1623,6 +1650,8 @@ section {
   font-weight: 500;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .event-card-details {
@@ -1630,6 +1659,7 @@ section {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   margin-bottom: 0.75rem;
+  word-wrap: break-word;
 }
 
 .event-card-description {
@@ -1638,6 +1668,8 @@ section {
   color: var(--color-text);
   opacity: 0.8;
   line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .event-status {
@@ -1778,37 +1810,44 @@ section {
   }
   
   .logo-section img {
-    width: 280px;
+    width: 220px;
   }
   
   .logo-title {
-    font-size: 1.6rem;
-    letter-spacing: 0.1em;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+  }
+  
+  .countdown {
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .countdown-item {
-    min-width: 60px;
+    min-width: 55px;
     padding: var(--space-xs);
   }
   
   .countdown-value {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
-  .event-card {
-    grid-template-columns: 1fr;
-    gap: var(--space-sm);
-    text-align: center;
+  .countdown-label {
+    font-size: 0.55rem;
   }
   
-  .event-card-date {
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--space-xs);
+  .event-card-info h4 {
+    font-size: 1rem;
   }
   
-  .event-status {
-    margin: 0 auto;
+  .event-card-description {
+    font-size: 0.85rem;
+  }
+  
+  .events-section h2,
+  .about-section h2,
+  .gallery-section h2 {
+    font-size: 1.3rem;
   }
 }
 
@@ -1832,6 +1871,28 @@ section {
   .event-details-summary {
     flex-direction: row;
     gap: var(--space-lg);
+  }
+  
+  /* Event card - tablet layout */
+  .event-card {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: var(--space-md);
+    align-items: start;
+    text-align: left;
+  }
+  
+  .event-card-date {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .event-card-date .month {
+    margin-top: 0.25rem;
+  }
+  
+  .event-status {
+    align-self: start;
   }
   
   .gallery-collage {
